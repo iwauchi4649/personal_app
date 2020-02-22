@@ -23,6 +23,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @posts = Post.includes(:photos, :user).limit(10).order('created_at DESC')
+  end
+
   private
     def post_params
       params.require(:post).permit(:caption, photos_attributes: [:image]).merge(user_id: current_user.id)
