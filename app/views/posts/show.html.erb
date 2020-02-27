@@ -32,6 +32,11 @@
           </div>
           <div class="comment-post-id">
             <div class="m-2">
+
+              <div id="comment-post-<%= @post.id.to_s %>">
+                <%= render 'comment_list', post: @post %>
+              </div>
+
             </div>
           </div>
         </div>
@@ -44,14 +49,24 @@
               <%= link_to "いいね", post_likes_path(@post), method: :POST, remote: true, class: "love hide-text" %>
             <% end %>
           </div>
+
         </div>
 
         <div id="like-text-post-<%= @post.id.to_s %>">
-          <%= render "likes/like_text", { likes: @post.likes } %>
+          <%= render "like_text", { likes: @post.likes } %>
         </div>
 
         <div class="post-time"><%= time_ago_in_words(@post.created_at).upcase %>前</div>
         <hr>
+
+        <div class="row parts" id="comment-form-post-<%= @post.id.to_s %>">
+          <%= form_with model: [@post, Comment.new],  class: "w-100" do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>
