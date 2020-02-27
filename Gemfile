@@ -66,3 +66,5 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.7.1'
 gem 'carrierwave'
 gem "mini_magick"
+
+gem 'pg', group: :production
