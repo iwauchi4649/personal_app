@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :likes
+  has_many :comments
   # has_manyは、他のモデルとの間に「1対多」のつながりがあることを示す。「1側」にhas_manyを追加。
   
   # Include default devise modules. Others available are:
