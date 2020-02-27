@@ -68,3 +68,4 @@ gem 'carrierwave'
 gem "mini_magick"
 
 gem 'pg', group: :production
+gem 'sqlite3', group: :development
