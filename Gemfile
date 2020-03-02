@@ -68,6 +68,5 @@ gem 'devise', '~> 4.7.1'
 gem 'carrierwave'
 gem "mini_magick"
 
-group :production do
-  gem 'pg'
-end
+gem 'pg', group: :production
+gem 'sqlite3', group: :development
